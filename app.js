@@ -1,36 +1,46 @@
-//functions to do calculations for weight
-	function findWorkingMax(oneRepMax) {
-		workingMax = oneRepMax * 0.90;
-		return workingMax;
-	};
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-	function calcweight1(workingMax) {
-		var week1weights = [0.65, 0.75, 0.85];
-		return week1weights.map( x => x * workingMax).join(', ');
-	};
+var index = require('./routes/index');
+var users = require('./routes/users');
 
-	function calcweight2(workingMax) {
-		var week2weights = [0.70, 0.80, 0.90];
-		return week2weights.map( x => x * workingMax).join(', ');
-	};
+var app = express();
 
-	function calcweight3(workingMax) {
-		var week3weights = [0.75, 0.85, 0.95];
-		return week3weights.map( x => x * workingMax).join(', ');
-	};
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
-	function calcweight4(workingMax) {
-		var week4weights = [0.40, 0.50, 0.60];
-		return week4weights.map( x => x * workingMax).join(', ');
-	};
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-//calcweight functions need to format results to allow only one decimal place
-//calcweight functions will likely be refactored to have the array of floats contain user input numbers, both in their value and amount of them;
+app.use('/', index);
+app.use('/users', users);
 
-module.exports = {
-	findWorkingMax, 
-	calcweight1, 
-	calcweight2, 
-	calcweight3, 
-	calcweight4,
-};
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
