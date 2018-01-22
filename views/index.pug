@@ -3,3 +3,13 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  h2 Enter a one rep max to get started
+  br
+  h3 One Rep Max
+  form(method="get" action="/working-max")
+    input(
+      type='text'
+      name='oneRepMax'
+    )
+    button(type="button") Calculate

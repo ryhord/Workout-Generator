@@ -2,7 +2,7 @@ var app = require("../calculations.js");
 var chai = require("chai");
 var expect = chai.expect;
 
-describe("app", function(){
+describe("calulations", function(){
 	
 	describe("findworkingMax", function(){
 		it("calculates 90% of a users 1RM", function() {
