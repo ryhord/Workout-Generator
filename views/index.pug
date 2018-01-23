@@ -7,9 +7,9 @@ block content
   h2 Enter a one rep max to get started
   br
   h3 One Rep Max
-  form(method="get" action="/working-max")
+  form(method="POST" action="/workingmax")
     input(
       type='text'
       name='oneRepMax'
     )
-    button(type="button") Calculate
+    input(type="submit" value="Calculate")
