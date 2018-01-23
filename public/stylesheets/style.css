@@ -1,6 +1,28 @@
+/*
+*{
+	border: 1px solid red;
+} */
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+}
+
+.main-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80vh;
+}
+
+.content-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
 
 a {
