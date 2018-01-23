@@ -4,14 +4,9 @@ block content
   div( class="main-container" )
     div( class="content-container" )
       h1= title
-      p Welcome to #{title}
 
-      h2 Enter a one rep max to get started
+      h2 Choose a program to get started
       br
       h3 One Rep Max
-      form(method="POST" action="/workingmax")
-        input(
-          type='text'
-          name='oneRepMax'
-        )
-        input(type="submit" value="Calculate")
+      form(method="GET" action="/531")
+        button(type="submit" class="btn btn-outline-info") 5:3:1
