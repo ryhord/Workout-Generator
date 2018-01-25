@@ -3,8 +3,11 @@ extends layout
 block content
   div( class="main-container" )
     div( class="content-container" )
-      h1 Your Working Max
-      h2= workingmax
+      h1 Your Working Maxes
+      h2 Overhead Press #{pressWorkingMax}
+      h2 Deadlift #{deadWorkingMax}
+      h2 Bench Press #{benchWorkingMax}
+      h2 Squat #{squatWorkingMax}
       br
       br
       form(method="GET" action="/workingmax/results")
