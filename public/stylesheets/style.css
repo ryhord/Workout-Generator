@@ -25,6 +25,13 @@ body {
 	align-items: center;
 }
 
+.formInput{
+	margin-bottom: 10px;
+}
+
+#calcButton
+
 a {
   color: #00B7FF;
 }
+

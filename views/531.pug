@@ -3,14 +3,33 @@ extends layout
 block content
   div( class="main-container" )
     div( class="content-container" )
-      h1= title
-
-      h2 Enter a one rep max to get started
+      h1 Enter a one rep max for each lift to get started
       br
-      h3 One Rep Max
+      br
       form(method="POST" action="/workingmax")
+        h2 Overhead Press
         input(
           type='text'
-          name='oneRepMax'
+          name='pressMax'
+          class='formInput'
         )
-        input(type="submit" value="Calculate")
+        h2 Deadlift
+        input(
+          type='text'
+          name='deadMax'
+          class='formInput'
+        )
+        h2 Bench Press
+        input(
+          type='text'
+          name='benchMax'
+          class='formInput'
+        )
+        h2 Squat
+        input(
+          type='text'
+          name='squatMax'
+          class='formInput'
+        )
+        br
+        input(type="submit" value="Calculate" id="calcButton")
