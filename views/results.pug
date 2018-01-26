@@ -1,8 +1,31 @@
 extends layout
 
 block content
-  div( class="main-container" )
-    div( class="content-container" )
-      h1 Results
-      div
-        h1 Week One Weights #{results}
+  div( class="container" )
+    h1(id="resultsTitle") Results
+    div( class="container" id="resultsContainer" )
+      
+      div(id="week1Results")
+        ul(class="weekTitle") Week One Weights
+          li Overhead Press: #{week1PressWeights}
+          li Deadlift: #{week1DeadWeights}
+          li Bench: #{week1BenchWeights}
+          li Squat: #{week1SquatWeights}
+      div(id="week2Results")
+        ul(class="weekTitle") Week Two Weights 
+          li Overhead Press: #{week2PressWeights}
+          li Deadlift: #{week2DeadWeights}
+          li Bench: #{week2BenchWeights}
+          li Squat: #{week2SquatWeights}
+      div(id="week3Results")
+        ul(class="weekTitle") Week Three Weights 
+          li Overhead Press: #{week3PressWeights}
+          li Deadlift: #{week3DeadWeights}
+          li Bench: #{week3BenchWeights}
+          li Squat: #{week3SquatWeights}
+      div(id="week4Results")
+        ul(class="weekTitle") Week Four Weights 
+          li Overhead Press: #{week4PressWeights}
+          li Deadlift: #{week4DeadWeights}
+          li Bench: #{week4BenchWeights}
+          li Squat: #{week4SquatWeights}

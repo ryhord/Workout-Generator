@@ -1,21 +1,22 @@
-/*
+
 *{
 	border: 1px solid red;
-} */
+}
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: white;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
   background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: auto;
 }
 
 .main-container{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 80vh;
 }
 
 .content-container{
@@ -27,11 +28,27 @@ body {
 
 .formInput{
 	margin-bottom: 10px;
+} 
+
+/**************************
+RESULTS VIEW
+**************************/
+#resultsTitle{
+	text-align: center;
+	font-size: 100px;
 }
 
-#calcButton
-
-a {
-  color: #00B7FF;
+#resultsContainer{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
 }
 
+.weekTitle{
+	font-size: 30px;
+	list-style: none;
+}
+
+.weekTitle li {
+
+}
