@@ -88,6 +88,10 @@ RESULTS VIEW
 	list-style: none;
 }
 
-.weekTitle li {
+ul {
+	font-weight: bold;
+}
 
+.weekTitle li {
+	font-weight: normal;
 }
