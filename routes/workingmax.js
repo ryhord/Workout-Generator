@@ -2,20 +2,29 @@ var express = require('express');
 var router = express.Router();
 var calc = require('../calculations');
 
+var app = express();
+
 
 /* GEt/post the working max */
 router.post('/', function(req, res) {
+
+	app.locals.pressMax = req.body.pressMax;
+	app.locals.deadMax = req.body.deadMax;
+	app.locals.benchMax = req.body.benchMax;
+	app.locals.squatMax = req.body.squatMax;
+
 	var weight = {
-		pressMax: req.body.pressMax,
-		deadMax: req.body.deadMax,
-		benchMax: req.body.benchMax,
-		squatMax: req.body.squatMax,
+		pressMax: app.locals.pressMax,
+		deadMax: app.locals.deadMax,
+		benchMax: app.locals.benchMax,
+		squatMax: app.locals.squatMax,
 	}
 
 	var pressWorkingMax = calc.findWorkingMax(weight.pressMax);
 	var deadWorkingMax = calc.findWorkingMax(weight.deadMax);
 	var benchWorkingMax = calc.findWorkingMax(weight.benchMax);
 	var squatWorkingMax = calc.findWorkingMax(weight.squatMax);
+
 	res.cookie('press_working_max', pressWorkingMax);
 	res.cookie('dead_working_max', deadWorkingMax);
 	res.cookie('bench_working_max', benchWorkingMax);
@@ -29,7 +38,7 @@ router.post('/', function(req, res) {
 });
 
 router.get('/results', function(req, res) {
-	//Week 1 Results
+	//Week 1 Results (possibly reduced to arrays, calc function mapped)
 	var week1PressWeights = calc.calcweight1(req.cookies.press_working_max);
 	var week1DeadWeights = calc.calcweight1(req.cookies.dead_working_max);
 	var week1BenchWeights = calc.calcweight1(req.cookies.bench_working_max);
@@ -53,7 +62,7 @@ router.get('/results', function(req, res) {
 	var week4BenchWeights = calc.calcweight4(req.cookies.bench_working_max);
 	var week4SquatWeights = calc.calcweight4(req.cookies.squat_working_max);
 
-	//Template Render
+	//Template Render (need to be easier way, and to load results dynamically based on number of months wanted)
 	res.render('results', { 
 		week1PressWeights: week1PressWeights,
 		week1DeadWeights: week1DeadWeights,
