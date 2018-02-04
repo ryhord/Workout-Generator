@@ -6,75 +6,54 @@ var app = express();
 
 /* GEt/post the working max */
 router.post('/', function(req, res) {
+	app.locals.maxes = [req.body.pressMax, req.body.deadMax, req.body.benchMax, req.body.squatMax];
 
-	app.locals.pressMax = req.body.pressMax;
-	app.locals.deadMax = req.body.deadMax;
-	app.locals.benchMax = req.body.benchMax;
-	app.locals.squatMax = req.body.squatMax;
-
-	var weight = {
-		pressMax: app.locals.pressMax,
-		deadMax: app.locals.deadMax,
-		benchMax: app.locals.benchMax,
-		squatMax: app.locals.squatMax,
-	}
-
-	app.locals.pressWorkingMax = calc.findWorkingMax(weight.pressMax);
-	app.locals.deadWorkingMax = calc.findWorkingMax(weight.deadMax);
-	app.locals.benchWorkingMax = calc.findWorkingMax(weight.benchMax);
-	app.locals.squatWorkingMax = calc.findWorkingMax(weight.squatMax);
+	app.locals.workingMaxes = app.locals.maxes.map(calc.findWorkingMax);
 
 	res.render('workingmax', { 
-		pressWorkingMax: app.locals.pressWorkingMax, 
-		deadWorkingMax: app.locals.deadWorkingMax, 
-		benchWorkingMax: app.locals.benchWorkingMax, 
-		squatWorkingMax: app.locals.squatWorkingMax 
+		pressWorkingMax: app.locals.workingMaxes[0], 
+		deadWorkingMax: app.locals.workingMaxes[1], 
+		benchWorkingMax: app.locals.workingMaxes[2], 
+		squatWorkingMax: app.locals.workingMaxes[3] 
 	});
 });
 
-router.get('/results', function(req, res) {
-	//Week 1 Results (possibly reduced to arrays, calc function mapped)
-	var week1PressWeights = calc.calcweight1(app.locals.pressWorkingMax);
-	var week1DeadWeights = calc.calcweight1(app.locals.deadWorkingMax);
-	var week1BenchWeights = calc.calcweight1(app.locals.benchWorkingMax);
-	var week1SquatWeights = calc.calcweight1(app.locals.squatWorkingMax);
+router.post('/results', function(req, res) {
+	console.log(req.body.months);
+	var months = req.body.months;
+	//Week 1 Results
+	app.locals.week1Weights = app.locals.workingMaxes.map(calc.calcweight1);
 
 	//Week 2 Results
-	var week2PressWeights = calc.calcweight2(app.locals.pressWorkingMax);
-	var week2DeadWeights = calc.calcweight2(app.locals.deadWorkingMax);
-	var week2BenchWeights = calc.calcweight2(app.locals.benchWorkingMax);
-	var week2SquatWeights = calc.calcweight2(app.locals.squatWorkingMax);
-	
+	app.locals.week2Weights = app.locals.workingMaxes.map(calc.calcweight2);
+
 	//Week 3 Results
-	var week3PressWeights = calc.calcweight3(app.locals.pressWorkingMax);
-	var week3DeadWeights = calc.calcweight3(app.locals.deadWorkingMax);
-	var week3BenchWeights = calc.calcweight3(app.locals.benchWorkingMax);
-	var week3SquatWeights = calc.calcweight3(app.locals.squatWorkingMax);
-	
+	app.locals.week3Weights = app.locals.workingMaxes.map(calc.calcweight3);
+
 	//Week 4 Results
-	var week4PressWeights = calc.calcweight4(app.locals.pressWorkingMax);
-	var week4DeadWeights = calc.calcweight4(app.locals.deadWorkingMax);
-	var week4BenchWeights = calc.calcweight4(app.locals.benchWorkingMax);
-	var week4SquatWeights = calc.calcweight4(app.locals.squatWorkingMax);
+	app.locals.week4Weights = app.locals.workingMaxes.map(calc.calcweight4);
+
+	//maxes + lbs per month iteration
 
 	//Template Render (need to be easier way, and to load results dynamically based on number of months wanted)
-	res.render('results', { 
-		week1PressWeights: week1PressWeights,
-		week1DeadWeights: week1DeadWeights,
-		week1BenchWeights: week1BenchWeights,
-		week1SquatWeights: week1SquatWeights,
-		week2PressWeights: week2PressWeights,
-		week2DeadWeights: week2DeadWeights,
-		week2BenchWeights: week2BenchWeights,
-		week2SquatWeights: week2SquatWeights,
-		week3PressWeights: week3PressWeights,
-		week3DeadWeights: week3DeadWeights,
-		week3BenchWeights: week3BenchWeights,
-		week3SquatWeights: week3SquatWeights,
-		week4PressWeights: week4PressWeights,
-		week4DeadWeights: week4DeadWeights,
-		week4BenchWeights: week4BenchWeights,
-		week4SquatWeights: week4SquatWeights,
+	res.render('results', {
+		months: months,
+		week1PressWeights: app.locals.week1Weights[0],
+		week1DeadWeights: app.locals.week1Weights[1],
+		week1BenchWeights: app.locals.week1Weights[2],
+		week1SquatWeights: app.locals.week1Weights[3],
+		week2PressWeights: app.locals.week2Weights[0],
+		week2DeadWeights: app.locals.week2Weights[1],
+		week2BenchWeights: app.locals.week2Weights[2],
+		week2SquatWeights: app.locals.week2Weights[3],
+		week3PressWeights: app.locals.week3Weights[0],
+		week3DeadWeights: app.locals.week3Weights[1],
+		week3BenchWeights: app.locals.week3Weights[2],
+		week3SquatWeights: app.locals.week3Weights[3],
+		week4PressWeights: app.locals.week4Weights[0],
+		week4DeadWeights: app.locals.week4Weights[1],
+		week4BenchWeights: app.locals.week4Weights[2],
+		week4SquatWeights: app.locals.week4Weights[3],
 	});
 
 

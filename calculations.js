@@ -9,7 +9,7 @@
 		week1weights = week1weights.map( x => x * workingMax); //mult workingmax by all values
 		week1weights = week1weights.map(function(x){
 			return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
-		}); // rounds result to the nearest multiple of 5		
+		}); // rounds result to the nearest multiple of 5	
 		return week1weights.join(', ');
 	};
 

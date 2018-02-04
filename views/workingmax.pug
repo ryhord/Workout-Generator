@@ -10,7 +10,7 @@ block content
       h2 Squat #{squatWorkingMax}
       br
       br
-      form(method="GET" action="/workingmax/results")
+      form(method="POST" action="/workingmax/results")
         p Enter the number of months you want calculations for    
           select(name="months")
             option(value=1) 1
@@ -31,4 +31,4 @@ block content
             option(value=16) 16
             option(value=17) 17
             option(value=18) 18
-        button(type="submit" name="months" class="btn btn-outline-light") Get Results
+        button(type="submit" class="btn btn-outline-light") Get Results
