@@ -3,12 +3,13 @@ extends layout
 block content
   div( class="container" )
     h1(id="resultsTitle") Results
-    
-      h3 Month
+    - var n = 0;
+    while n < months
+      h3 Month #{n++}
       div( class="container" id="resultsContainer" )
         div(id="week1Results")
           ul(class="weekTitle") Week One Weights
-            li Overhead Press: #{week1PressWeights}
+            li Overhead Press: #{week1PressWeights} + 
             li Deadlift: #{week1DeadWeights}
             li Bench: #{week1BenchWeights}
             li Squat: #{week1SquatWeights}

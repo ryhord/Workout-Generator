@@ -21,21 +21,33 @@ router.post('/', function(req, res) {
 router.post('/results', function(req, res) {
 	console.log(req.body.months);
 	var months = req.body.months;
-	//Week 1 Results
-	app.locals.week1Weights = app.locals.workingMaxes.map(calc.calcweight1);
+	//loop calculations based on number of months requested
+	//create results object
+	//push calculated results into object, in proper key value notation
+	var allResults = [week1Results, week2Results, week3Results, week4Results];
+	var week1Results = [];
+	var week2Results = [];
+	var week3Results = [];
+	var week4Results = [];
+	for(i=0; i < months; i++) {
+		
+		//Week 1 Results
+		//app.locals.week1Weights = app.locals.workingMaxes.map(calc.calcweight1);
+		var appropriateNumberMonthValues = app.locals.workingMaxes.map(calc.calcweight1) + (5 * i);
 
-	//Week 2 Results
-	app.locals.week2Weights = app.locals.workingMaxes.map(calc.calcweight2);
+		//Week 2 Results
+		app.locals.week2Weights = app.locals.workingMaxes.map(calc.calcweight2);
 
-	//Week 3 Results
-	app.locals.week3Weights = app.locals.workingMaxes.map(calc.calcweight3);
+		//Week 3 Results
+		app.locals.week3Weights = app.locals.workingMaxes.map(calc.calcweight3);
 
-	//Week 4 Results
-	app.locals.week4Weights = app.locals.workingMaxes.map(calc.calcweight4);
+		//Week 4 Results
+		app.locals.week4Weights = app.locals.workingMaxes.map(calc.calcweight4);
 
-	//maxes + lbs per month iteration
-
-	//Template Render (need to be easier way, and to load results dynamically based on number of months wanted)
+		//maxes + lbs per month iteration
+		//use .join(', ') here so calc fuctions are single responsibility
+	}
+	//Template Render (render an object and its values)
 	res.render('results', {
 		months: months,
 		week1PressWeights: app.locals.week1Weights[0],

@@ -10,7 +10,7 @@
 		week1weights = week1weights.map(function(x){
 			return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
 		}); // rounds result to the nearest multiple of 5	
-		return week1weights.join(', ');
+		return week1weights; //.join(', ');
 	};
 
 	function calcweight2(workingMax) {
@@ -19,7 +19,7 @@
 		week2weights = week2weights.map(function(x){
 			return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
 		}); // rounds result to the nearest multiple of 5		
-		return week2weights.join(', ');
+		return week2weights;
 	};
 
 	function calcweight3(workingMax) {
@@ -28,7 +28,7 @@
 		week3weights = week3weights.map(function(x){
 			return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
 		}); // rounds result to the nearest multiple of 5		
-		return week3weights.join(', ');
+		return week3weights;
 	};
 
 	function calcweight4(workingMax) {
@@ -37,7 +37,7 @@
 		week4weights = week4weights.map(function(x){
 			return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
 		}); // rounds result to the nearest multiple of 5		
-		return week4weights.join(', ');
+		return week4weights;
 	};
 
 //calcweight functions need to format results to allow only one decimal place
