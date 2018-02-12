@@ -5,16 +5,21 @@ var app = express();
 
 /* GEt/post the working max */
 router.post('/', function(req, res) {
-	app.locals.maxes = [req.body.pressMax, req.body.deadMax, req.body.benchMax, req.body.squatMax];
+	app.locals.maxes = {
+		OverheadPress : req.body.pressMax, 
+		Deadlift : req.body.deadMax, 
+		Bench : req.body.benchMax, 
+		Squat : req.body.squatMax,
+	};
 
-	app.locals.workingMaxes = app.locals.maxes.map(calc.findWorkingMax);
+	app.locals.workingMaxes = {
+		OverheadPress : calc.findWorkingMax(req.body.pressMax),
+		Deadlift : calc.findWorkingMax(req.body.deadMax), 
+		Bench : calc.findWorkingMax(req.body.benchMax), 
+		Squat : calc.findWorkingMax(req.body.squatMax),
+	}
 
-	res.render('workingmax', { 
-		pressWorkingMax: app.locals.workingMaxes[0], 
-		deadWorkingMax: app.locals.workingMaxes[1], 
-		benchWorkingMax: app.locals.workingMaxes[2], 
-		squatWorkingMax: app.locals.workingMaxes[3] 
-	});
+	res.render('workingmax', { workingMaxes: app.locals.workingMaxes });
 });
 
 router.post('/results', function(req, res) {

@@ -4,10 +4,8 @@ block content
   div( class="main-container" id="main-contain-3")
     div( class="content-container" )
       h1 Your Working Maxes
-      h2 Overhead Press #{pressWorkingMax}
-      h2 Deadlift #{deadWorkingMax}
-      h2 Bench Press #{benchWorkingMax}
-      h2 Squat #{squatWorkingMax}
+      each val, index in workingMaxes
+        h2= index + ': ' + val
       br
       br
       form(method="POST" action="/workingmax/results")
