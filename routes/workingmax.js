@@ -24,37 +24,64 @@ router.post('/', function(req, res) {
 
 router.post('/results', function(req, res) {
 	console.log(req.body.months);
+	var results = {};
 	var months = req.body.months;
-	//loop calculations based on number of months requested
-	//create results object
-	//push calculated results into object, in proper key value notation
+	for(var currentMonth=1; currentMonth<=months; currentMonth++){
+		var maxes = {
+			OverheadPress : parseInt(app.locals.maxes.OverheadPress) + (5 * (currentMonth - 1)), 
+			Deadlift : parseInt(app.locals.maxes.Deadlift) + (10 * (currentMonth - 1)), 
+			Bench : parseInt(app.locals.maxes.Bench) + (5 * (currentMonth - 1)), 
+			Squat : parseInt(app.locals.maxes.Squat) + (10 * (currentMonth - 1)),
+		}
+		console.log("These are the maxes");
+		console.log(maxes);
 
-	var monthOfWeights = {
-		week1Weights: app.locals.workingMaxes.map(calc.calcweight1),
-		week2Weights: app.locals.workingMaxes.map(calc.calcweight2),
-		week3Weights: app.locals.workingMaxes.map(calc.calcweight3),
-		week4Weights: app.locals.workingMaxes.map(calc.calcweight4),
+		var workingMaxes = {
+			OverheadPress : calc.findWorkingMax(maxes.OverheadPress),
+			Deadlift : calc.findWorkingMax(maxes.Deadlift),
+			Bench : calc.findWorkingMax(maxes.Bench),
+			Squat : calc.findWorkingMax(maxes.Squat),
+		}
+		console.log('These are the workingmaxes');
+		console.log(workingMaxes);
+
+		var monthOfWeights = {
+			week1Weights : {
+				OverheadPress : calc.calcweight1(workingMaxes.OverheadPress).join(', '),
+				Deadlift : calc.calcweight1(workingMaxes.Deadlift).join(', '),
+				Bench : calc.calcweight1(workingMaxes.Bench).join(', '),
+				Squat : calc.calcweight1(workingMaxes.Squat).join(', '),
+			},
+			week2Weights: {
+				OverheadPress : calc.calcweight2(workingMaxes.OverheadPress).join(', '),
+				Deadlift : calc.calcweight2(workingMaxes.Deadlift).join(', '),
+				Bench : calc.calcweight2(workingMaxes.Bench).join(', '),
+				Squat : calc.calcweight2(workingMaxes.Squat).join(', '),
+			},
+			week3Weights: {
+				OverheadPress : calc.calcweight3(workingMaxes.OverheadPress).join(', '),
+				Deadlift : calc.calcweight3(workingMaxes.Deadlift).join(', '),
+				Bench : calc.calcweight3(workingMaxes.Bench).join(', '),
+				Squat : calc.calcweight3(workingMaxes.Squat).join(', '),
+			},
+			week4Weights: {
+				OverheadPress : calc.calcweight4(workingMaxes.OverheadPress).join(', '),
+				Deadlift : calc.calcweight4(workingMaxes.Deadlift).join(', '),
+				Bench : calc.calcweight4(workingMaxes.Bench).join(', '),
+				Squat : calc.calcweight4(workingMaxes.Squat).join(', '),
+			},
+		}
+
+		console.log('This is the month of weights');
+		console.log(monthOfWeights);
+		results[currentMonth] = {};
+		results[currentMonth]["weights"] = monthOfWeights;
+		console.log(results);
 	}
-	
-		
-	//Week 1 Results
-	//app.locals.week1Weights = app.locals.workingMaxes.map(calc.calcweight1);
-
-	//Week 2 Results
-	//app.locals.week2Weights = app.locals.workingMaxes.map(calc.calcweight2);
-
-	//Week 3 Results
-	//app.locals.week3Weights = app.locals.workingMaxes.map(calc.calcweight3);
-
-	//Week 4 Results
-	//app.locals.week4Weights = app.locals.workingMaxes.map(calc.calcweight4);
-
 	//maxes + lbs per month iteration
-	//use .join(', ') here so calc fuctions are single responsibility
-	//Template Render (render an object and its values)
 	res.render('results', {
 		months: months,
-		monthOfWeights: monthOfWeights,
+		results: results,
 	});
 
 
