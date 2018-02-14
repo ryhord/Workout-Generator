@@ -5,4 +5,9 @@ html
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    div( class="main-container")
+      div( class="content-container")
+        block content
+    footer(id="footerLink")
+      p Find this project on GitHub at 
+        a(href="https://github.com/ryhord/Workout-Generator" target="_blank") https://github.com/ryhord/Workout-Generator

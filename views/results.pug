@@ -1,28 +1,27 @@
 extends layout
 
 block content
-  div( class="container" )
-    h1(id="resultsTitle") Results
-      each val, index in results
-        h3(class="monthTitle")= 'Month ' + index
-        div(class="container" id="resultsContainer")
-          ul(class="weekTitle") Week 1 Weights
-            li Overhead Press: #{results[index]["weights"]["week1Weights"]["OverheadPress"]}
-            li Deadlift: #{results[index]["weights"]["week1Weights"]["Deadlift"]}
-            li Bench: #{results[index]["weights"]["week1Weights"]["Bench"]}
-            li Squat: #{results[index]["weights"]["week1Weights"]["Squat"]}
-          ul(class="weekTitle") Week 2 Weights
-            li Overhead Press: #{results[index]["weights"]["week2Weights"]["OverheadPress"]}
-            li Deadlift: #{results[index]["weights"]["week2Weights"]["Deadlift"]}
-            li Bench: #{results[index]["weights"]["week2Weights"]["Bench"]}
-            li Squat: #{results[index]["weights"]["week2Weights"]["Squat"]}
-          ul(class="weekTitle") Week 3 Weights
-            li Overhead Press: #{results[index]["weights"]["week3Weights"]["OverheadPress"]}
-            li Deadlift: #{results[index]["weights"]["week3Weights"]["Deadlift"]}
-            li Bench: #{results[index]["weights"]["week3Weights"]["Bench"]}
-            li Squat: #{results[index]["weights"]["week3Weights"]["Squat"]}
-          ul(class="weekTitle") Week 4 Weights
-            li Overhead Press: #{results[index]["weights"]["week4Weights"]["OverheadPress"]}
-            li Deadlift: #{results[index]["weights"]["week4Weights"]["Deadlift"]}
-            li Bench: #{results[index]["weights"]["week4Weights"]["Bench"]}
-            li Squat: #{results[index]["weights"]["week4Weights"]["Squat"]}
+  h1(id="resultsTitle") Results
+    each val, index in results
+      h3(class="monthTitle")= 'Month ' + index
+      div(class="container" id="resultsContainer")
+        ul(class="weekTitle") Week 1 Weights
+          li Overhead Press: #{results[index]["weights"]["week1Weights"]["OverheadPress"]}
+          li Deadlift: #{results[index]["weights"]["week1Weights"]["Deadlift"]}
+          li Bench: #{results[index]["weights"]["week1Weights"]["Bench"]}
+          li Squat: #{results[index]["weights"]["week1Weights"]["Squat"]}
+        ul(class="weekTitle") Week 2 Weights
+          li Overhead Press: #{results[index]["weights"]["week2Weights"]["OverheadPress"]}
+          li Deadlift: #{results[index]["weights"]["week2Weights"]["Deadlift"]}
+          li Bench: #{results[index]["weights"]["week2Weights"]["Bench"]}
+          li Squat: #{results[index]["weights"]["week2Weights"]["Squat"]}
+        ul(class="weekTitle") Week 3 Weights
+          li Overhead Press: #{results[index]["weights"]["week3Weights"]["OverheadPress"]}
+          li Deadlift: #{results[index]["weights"]["week3Weights"]["Deadlift"]}
+          li Bench: #{results[index]["weights"]["week3Weights"]["Bench"]}
+          li Squat: #{results[index]["weights"]["week3Weights"]["Squat"]}
+        ul(class="weekTitle") Week 4 Weights
+          li Overhead Press: #{results[index]["weights"]["week4Weights"]["OverheadPress"]}
+          li Deadlift: #{results[index]["weights"]["week4Weights"]["Deadlift"]}
+          li Bench: #{results[index]["weights"]["week4Weights"]["Bench"]}
+          li Squat: #{results[index]["weights"]["week4Weights"]["Squat"]}
