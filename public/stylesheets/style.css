@@ -30,6 +30,7 @@ body {
 	color: white;
 	display: flex;
 	justify-content: center;
+	padding-bottom: 20px;
 }
 
 #footerLink p {
@@ -77,6 +78,7 @@ RESULTS VIEW
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-template-rows: auto auto;
+	margin-bottom: 20px;
 }
 
 .monthTitle{
