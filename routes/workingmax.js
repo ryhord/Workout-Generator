@@ -33,8 +33,6 @@ router.post('/results', function(req, res) {
 			Bench : parseInt(app.locals.maxes.Bench) + (5 * (currentMonth - 1)), 
 			Squat : parseInt(app.locals.maxes.Squat) + (10 * (currentMonth - 1)),
 		}
-		console.log("These are the maxes");
-		console.log(maxes);
 
 		var workingMaxes = {
 			OverheadPress : calc.findWorkingMax(maxes.OverheadPress),
@@ -42,8 +40,6 @@ router.post('/results', function(req, res) {
 			Bench : calc.findWorkingMax(maxes.Bench),
 			Squat : calc.findWorkingMax(maxes.Squat),
 		}
-		console.log('These are the workingmaxes');
-		console.log(workingMaxes);
 
 		var monthOfWeights = {
 			week1Weights : {
@@ -71,20 +67,14 @@ router.post('/results', function(req, res) {
 				Squat : calc.calcweight4(workingMaxes.Squat).join(', '),
 			},
 		}
-
-		console.log('This is the month of weights');
-		console.log(monthOfWeights);
 		results[currentMonth] = {};
 		results[currentMonth]["weights"] = monthOfWeights;
-		console.log(results);
 	}
-	//maxes + lbs per month iteration
+
 	res.render('results', {
 		months: months,
 		results: results,
 	});
-
-
 });
 
 module.exports = router;

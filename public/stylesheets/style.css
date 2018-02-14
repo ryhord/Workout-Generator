@@ -83,6 +83,11 @@ RESULTS VIEW
 	grid-template-rows: auto auto;
 }
 
+.monthTitle{
+	font-size: 40px;
+	font-weight: bold;
+}
+
 .weekTitle{
 	font-size: 30px;
 	list-style: none;
