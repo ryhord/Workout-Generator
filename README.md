@@ -1,5 +1,5 @@
 # Workout-Generator
-This program was inspired by the adoption of the 5-3-1 program as found on T-Naiton into my own fitness program. For more complete
+This program was inspired by the adoption of the 5-3-1 program into my own fitness program. For more complete
 information, I encourage you to check out the link below.
 
 https://www.t-nation.com/workouts/531-how-to-build-pure-strength
