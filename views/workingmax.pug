@@ -6,9 +6,10 @@ block content
       h2= index + ': ' + val
     br
     br
-    form(method="POST" action="/workingmax/results")
-      p Enter the number of months you want calculations for    
-        select(name="months")
+    form(method="POST" action="/workingmax/results" id="workingmaxForm")     
+      div(class="form-group" id="workingmaxSelect")
+        label Enter the number of months you want results for
+        select(name="months" class="form-control col-sm-2" id="monthSelector")
           option(value=1 selected="selected") 1
           option(value=2) 2
           option(value=3) 3
@@ -27,4 +28,4 @@ block content
           option(value=16) 16
           option(value=17) 17
           option(value=18) 18
-      button(type="submit" class="btn btn-outline-light") Get Results
+      button(type="submit" class="btn btn-outline-light" id="getResultsButton") Get Results

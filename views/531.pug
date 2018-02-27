@@ -5,29 +5,30 @@ block content
   br
   br
   form(method="POST" action="/workingmax")
-    h2 Overhead Press
-    input(
-      type='text'
-      name='pressMax'
-      class='formInput'
-    )
-    h2 Deadlift
-    input(
-      type='text'
-      name='deadMax'
-      class='formInput'
-    )
-    h2 Bench Press
-    input(
-      type='text'
-      name='benchMax'
-      class='formInput'
-    )
-    h2 Squat
-    input(
-      type='text'
-      name='squatMax'
-      class='formInput'
-    )
-    br
-    input(type="submit" value="Calculate" class="btn btn-outline-light" id="calcButton")
+    div(class="form-group")
+      h2 Overhead Press
+      input(
+        type='text'
+        name='pressMax'
+        class='form-control'
+      )
+      h2 Deadlift
+      input(
+        type='text'
+        name='deadMax'
+        class='form-control'
+      )
+      h2 Bench Press
+      input(
+        type='text'
+        name='benchMax'
+        class='form-control'
+      )
+      h2 Squat
+      input(
+        type='text'
+        name='squatMax'
+        class='form-control'
+      )
+      br
+      input(type="submit" value="Calculate" class="btn btn-outline-light" id="calcButton")
