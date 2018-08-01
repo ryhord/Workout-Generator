@@ -26,8 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(expressSession({secret: '', saveUninitialized: false, resave: false}));
-
+app.use(expressSession({secret: 'secretKey', saveUninitialized: false, resave: false}));
 
 app.use('/', index);
 app.use('/users', users);
