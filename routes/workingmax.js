@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
 	res.render('workingmax', { workingMaxes: app.locals.workingMaxes });
 });
 
-router.post('/results', function(req, res) {
+router.get('/results', function(req, res) {
 	console.log(req.body.months);
 	var results = {};
 	var months = req.body.months;
